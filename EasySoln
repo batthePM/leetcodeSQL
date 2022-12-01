@@ -1,0 +1,14 @@
+Database - Easy
+
+#175
+SELECT a.firstName, a.lastName, b.city, b.state
+FROM Person a
+LEFT JOIN
+Address b
+ON a.personId = b.personId
+
+#181
+SELECT A.name Employee
+FROM Employee A, Employee B
+WHERE A.managerId = B.id
+AND A.salary > B.salary
