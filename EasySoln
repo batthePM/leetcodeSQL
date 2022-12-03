@@ -12,3 +12,23 @@ SELECT A.name Employee
 FROM Employee A, Employee B
 WHERE A.managerId = B.id
 AND A.salary > B.salary
+
+#182
+SELECT email
+FROM Person
+GROUP BY email
+HAVING count(email) > 1
+
+#183
+SELECT a.name Customers
+FROM Customers a
+LEFT JOIN Orders b
+ON a.Id = b.customerId
+WHERE b.customerId IS NULL
+
+#48
+DELETE p1
+FROM person p1,person p2 
+WHERE p1.email=p2.email and p1.id>p2.id
+
+
