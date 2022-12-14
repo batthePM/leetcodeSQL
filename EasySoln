@@ -40,3 +40,18 @@ WHERE dateDiff(w1.recordDate,w2.recordDate) = 1 AND w1.Temperature > w2.Temperat
 SELECT player_id, min(event_date) AS first_login
 FROM Activity
 GROUP BY player_id
+
+#584
+SELECT name FROM Customer WHERE referee_id <> 2 OR ISNULL(referee_id) = 1
+
+#586
+SELECT customer_number
+FROM Orders
+GROUP BY customer_number
+ORDER BY COUNT(order_number) DESC
+LIMIT 1
+
+#596
+SELECT name, population, area
+FROM World
+WHERE area >= 3000000 OR population >= 25000000
