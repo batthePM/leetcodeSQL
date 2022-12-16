@@ -51,7 +51,35 @@ GROUP BY customer_number
 ORDER BY COUNT(order_number) DESC
 LIMIT 1
 
-#596
+#595
 SELECT name, population, area
 FROM World
 WHERE area >= 3000000 OR population >= 25000000
+
+#596
+SELECT class FROM Courses
+GROUP BY class
+HAVING count(student)>4
+ORDER BY count(student)
+
+#607
+SELECT s.name FROM Salesperson s
+WHERE s.sales_id NOT IN(
+SELECT o.sales_id FROM Orders o
+LEFT JOIN Company c
+ON c.com_id = o.com_id
+WHERE c.name= "RED")
+
+#620
+SELECT id, movie, description, rating
+FROM Cinema
+WHERE id % 2 > 0 AND description <> "boring"
+ORDER BY rating DESC
+
+#627
+UPDATE Salary
+SET sex = CASE sex
+    WHEN 'f' THEN 'm'
+    WHEN 'm' THEN 'f'
+    ELSE NULL
+END
