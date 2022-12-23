@@ -83,3 +83,18 @@ SET sex = CASE sex
     WHEN 'm' THEN 'f'
     ELSE NULL
 END
+
+#1050
+SELECT actor_id, director_id
+FROM ActorDirector
+GROUP BY actor_id, director_id
+HAVING count(*) >= 3 
+
+#1084
+SELECT DISTINCT Product.product_id, Product.product_name FROM Product
+INNER JOIN Sales
+ON Product.product_id = Sales.product_id
+WHERE sale_date BETWEEN '2019-01-01' AND '2019-03-31'
+AND Product.product_id not in (select distinct product_id from Sales where sale_date > '2019-03-31' or sale_date < '2019-01-01')
+
+
