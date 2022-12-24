@@ -97,4 +97,15 @@ ON Product.product_id = Sales.product_id
 WHERE sale_date BETWEEN '2019-01-01' AND '2019-03-31'
 AND Product.product_id not in (select distinct product_id from Sales where sale_date > '2019-03-31' or sale_date < '2019-01-01')
 
+#1141
+SELECT activity_date as day, count(distinct(user_id)) active_users
+FROM Activity
+WHERE activity_date >= DATE_ADD("2019-07-28", interval -30 DAY)
+AND activity_date < '2019-07-28'
+GROUP BY activity_date
 
+#1148
+select distinct(author_id) as id
+from Views
+where author_id = viewer_id
+order by author_id
