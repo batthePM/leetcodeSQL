@@ -109,3 +109,17 @@ select distinct(author_id) as id
 from Views
 where author_id = viewer_id
 order by author_id
+
+#1407
+SELECT DISTINCT a.name, SUM(case when a.id = b.user_id then distance
+else 0 end) travelled_distance
+FROM Users a
+LEFT JOIN Rides b
+ON a.id = b.user_id
+GROUP BY b.user_id
+ORDER BY sum(distance) DESC, a.name ASC
+
+#1484
+SELECT sell_date, count(DISTINCT product) num_sold, group_concat(DISTINCT product) products
+FROM Activities
+GROUP BY sell_date
