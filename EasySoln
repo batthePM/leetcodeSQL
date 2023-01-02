@@ -123,3 +123,16 @@ ORDER BY sum(distance) DESC, a.name ASC
 SELECT sell_date, count(DISTINCT product) num_sold, group_concat(DISTINCT product) products
 FROM Activities
 GROUP BY sell_date
+
+#1527
+SELECT patient_id, patient_name, conditions
+FROM Patients
+WHERE conditions LIKE '% DIAB1%' OR conditions like 'DIAB1%'
+
+#1581
+SELECT customer_id, count(*) count_no_trans
+FROM Visits a
+LEFT JOIN Transactions b
+ON a.visit_id = b.visit_id
+WHERE b.transaction_id IS NULL
+GROUP BY customer_id
